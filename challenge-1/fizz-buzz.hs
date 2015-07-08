@@ -24,4 +24,4 @@ main = do
   args <- getArgs
   let div1:div2:upperBound:[] = [read arg | arg <- args]
   let putFizzBuzz = show . fizzBuzz div1 div2
-  mapM putStrLn $ map putFizzBuzz [1..upperBound]
+  mapM putStrLn $ map putFizzBuzz [0..upperBound]
