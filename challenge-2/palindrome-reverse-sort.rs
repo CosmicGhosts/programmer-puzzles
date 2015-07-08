@@ -7,8 +7,9 @@ use std::env;
 fn main() {
     let path_arg = env::args().nth(1).unwrap();
     let path = Path::new(&path_arg);
-    let file = BufReader::new(File::open(&path).unwrap());
-    file
+    let file = File::open(&path).unwrap();
+    let buffer = BufReader::new(file);
+    buffer
         .lines()
         .map(|line| line.unwrap())
         .map(|string| format_string(string))
