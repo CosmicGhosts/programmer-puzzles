@@ -25,22 +25,33 @@ fn format_string(string: String) -> String {
 }
 
 fn reverse_sort(string: &String) -> String {
-    return reverse(&strip_whitespace(&string));
+    let stripped_string = strip_whitespace(&string);
+    let sorted_string = sort_string(&stripped_string);
+    return reverse(&sorted_string);
+}
+
+fn sort_string(string: &String) -> String {
+    let mut characters: Vec<char> = string
+        .chars()
+        .collect();
+    characters.sort();
+    return characters
+        .into_iter()
+        .collect();
 }
 
 fn strip_whitespace(string: &String) -> String {
-    let x: String = string
+    return string
         .chars()
         .filter(|&c| c != ' ')
-        .collect();
-    return x;
+        .collect::<std::string::String>();
 }
 
-fn get_status(boolean: bool) -> String {
+fn get_status<'a>(boolean: bool) -> &'a str {
     let mut response_map = HashMap::new();
     response_map.insert(true, "YES");
     response_map.insert(false, "NO");
-    return response_map.get(&boolean).unwrap().to_string()
+    return response_map.get(&boolean).unwrap()
 }
 
 fn is_palindrome(string: &String) -> bool {
@@ -49,6 +60,8 @@ fn is_palindrome(string: &String) -> bool {
 }
 
 fn reverse(string: &String) -> String {
-    let characters = string.chars().rev().collect();
-    return characters;
+    return string
+        .chars()
+        .rev()
+        .collect();
 }
