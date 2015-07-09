@@ -10,13 +10,13 @@ instance Show FizzBuzzNum where
 
 fizzBuzz :: Int -> Int -> Int -> FizzBuzzNum
 fizzBuzz div1 div2 n
-  | byDiv1 n && byDiv2 n = FizzBuzz
-  | byDiv1 n             = Fizz
-  | byDiv2 n             = Buzz
-  | otherwise            = Num n
+  | byDiv1 && byDiv2 = FizzBuzz
+  | byDiv1           = Fizz
+  | byDiv2           = Buzz
+  | otherwise        = Num n
   where
-   byDiv1 = isDivisible div1
-   byDiv2 = isDivisible div2
+   byDiv1 = isDivisible div1 n
+   byDiv2 = isDivisible div2 n
 
 isDivisible divisor n = n `mod` divisor == 0
 
