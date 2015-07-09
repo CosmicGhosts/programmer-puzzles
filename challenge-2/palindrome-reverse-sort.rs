@@ -13,7 +13,7 @@ fn main() {
     buffer
         .lines()
         .map(|line| line.unwrap())
-        .map(|string| format_string(string))
+        .map(format_string)
         .map(|string| println!("{}", string))
         .collect::<Vec<()>>();
 }
