@@ -1,8 +1,9 @@
+use std::env;
+use std::path::Path;
 use std::io::{BufRead, BufReader};
 use std::fs::File;
-use std::path::Path;
 use std::collections::HashMap;
-use std::env;
+use std::string::String;
 
 fn main() {
     let path_arg = env::args().nth(1).unwrap();
@@ -20,14 +21,10 @@ fn main() {
 fn format_string(string: String) -> String {
     let palindrome = is_palindrome(&string);
     let status = get_status(palindrome);
-    let reversed_sorted = reverse_sort(&string);
-    return format!("{} | {}", status, reversed_sorted);
-}
-
-fn reverse_sort(string: &String) -> String {
     let stripped_string = strip_whitespace(&string);
     let sorted_string = sort_string(&stripped_string);
-    return reverse(&sorted_string);
+    let reversed_sorted = reverse(&sorted_string);
+    return format!("{} | {}", status, reversed_sorted);
 }
 
 fn sort_string(string: &String) -> String {
@@ -44,19 +41,34 @@ fn strip_whitespace(string: &String) -> String {
     return string
         .chars()
         .filter(|&c| c != ' ')
-        .collect::<std::string::String>();
+        .collect::<String>();
 }
 
 fn get_status<'a>(boolean: bool) -> &'a str {
-    let mut response_map = HashMap::new();
-    response_map.insert(true, "YES");
-    response_map.insert(false, "NO");
-    return response_map.get(&boolean).unwrap()
+    let mut responses = HashMap::new();
+    responses.insert(true, "YES");
+    responses.insert(false, "NO");
+    return responses.get(&boolean).unwrap()
 }
 
 fn is_palindrome(string: &String) -> bool {
-  let reversed = reverse(&string);
-  return string == &reversed;
+    let lower_string = lowercase(&string);
+    let reversed = reverse(&lower_string);
+    return &lower_string == &reversed;
+}
+
+fn lowercase(string: &String) -> String {
+    return string
+        .chars()
+        .map(lower_case_char)
+        .collect::<String>();
+}
+
+fn lower_case_char(c: char) -> char {
+    return c
+        .to_lowercase()
+        .next()
+        .unwrap()
 }
 
 fn reverse(string: &String) -> String {
