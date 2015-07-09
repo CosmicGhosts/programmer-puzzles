@@ -3,16 +3,15 @@ import sys
 def main(args):
     path = args[1]
     file = open(path, 'r')
-    lines = file.readlines()
+    lines = file.read().split('\n')
     strings = map(format_string, lines)
     for string in strings:
         print(string)
 
-def format_string(raw_string):
-    string = raw_string.rstrip()
+def format_string(string):
     palindrome = is_palindrome(string)
     status = get_status(palindrome)
-    stripped_string = strip_whitespace(string)
+    stripped_string = strip_spaces(string)
     sorted_string = sort_string(stripped_string)
     reversed_sorted = reverse(sorted_string)
     return "{0} | {1}".format(status, reversed_sorted)
@@ -21,7 +20,7 @@ def get_status(boolean):
     responses = {True: "YES", False: "NO"}
     return responses[boolean]
 
-def strip_whitespace(string):
+def strip_spaces(string):
     return string.replace(' ', '')
 
 def is_palindrome(string):

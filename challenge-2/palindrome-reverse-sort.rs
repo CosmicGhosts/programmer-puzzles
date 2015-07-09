@@ -21,7 +21,7 @@ fn main() {
 fn format_string(string: String) -> String {
     let palindrome = is_palindrome(&string);
     let status = get_status(palindrome);
-    let stripped_string = strip_whitespace(&string);
+    let stripped_string = strip_spaces(&string);
     let sorted_string = sort_string(&stripped_string);
     let reversed_sorted = reverse(&sorted_string);
     return format!("{} | {}", status, reversed_sorted);
@@ -37,7 +37,7 @@ fn sort_string(string: &String) -> String {
         .collect();
 }
 
-fn strip_whitespace(string: &String) -> String {
+fn strip_spaces(string: &String) -> String {
     return string
         .chars()
         .filter(|&c| c != ' ')
