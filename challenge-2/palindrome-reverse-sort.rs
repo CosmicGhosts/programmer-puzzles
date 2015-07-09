@@ -1,9 +1,10 @@
 use std::env;
-use std::path::Path;
-use std::io::{BufRead, BufReader};
 use std::fs::File;
-use std::collections::HashMap;
+use std::path::Path;
 use std::string::String;
+use std::ascii::AsciiExt;
+use std::collections::HashMap;
+use std::io::{BufRead, BufReader};
 
 fn main() {
     let path_arg = env::args().nth(1).unwrap();
@@ -58,17 +59,7 @@ fn is_palindrome(string: &String) -> bool {
 }
 
 fn lowercase(string: &String) -> String {
-    return string
-        .chars()
-        .map(lower_case_char)
-        .collect::<String>();
-}
-
-fn lower_case_char(c: char) -> char {
-    return c
-        .to_lowercase()
-        .next()
-        .unwrap()
+    return (*string).to_ascii_lowercase();
 }
 
 fn reverse(string: &String) -> String {
