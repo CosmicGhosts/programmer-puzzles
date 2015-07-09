@@ -3,10 +3,9 @@ import sys
 def main(args):
     path = args[1]
     file = open(path, 'r')
-    lines = file.read().split('\n')
+    lines = file.read().strip().split('\n')
     strings = map(format_string, lines)
-    for string in strings:
-        print(string)
+    print("\n".join(strings))
 
 def format_string(string):
     palindrome = is_palindrome(string)
@@ -26,10 +25,10 @@ def strip_spaces(string):
 def is_palindrome(string):
     lower_string = string.lower()
     reversed_string = reverse(lower_string)
-    return lower_string == lower_string[::-1] 
+    return lower_string == reversed_string
 
 def reverse(string):
-    return string[::-1]
+    return "".join(reversed(string))
 
 def sort_string(string):
     return "".join(sorted(string))
