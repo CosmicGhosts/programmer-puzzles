@@ -11,12 +11,13 @@ fn main() {
     let path = Path::new(&path_arg);
     let file = File::open(&path).unwrap();
     let buffer = BufReader::new(file);
-    buffer
+    let output: String = buffer
         .lines()
         .map(|line| line.unwrap())
         .map(format_string)
-        .map(|string| println!("{}", string))
-        .collect::<Vec<()>>();
+        .collect::<Vec<String>>()
+        .connect("\n");
+    println!("{}", output);
 }
 
 fn format_string(string: String) -> String {
