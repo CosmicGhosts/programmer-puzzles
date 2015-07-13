@@ -1,25 +1,10 @@
-Mordor Challenge
+Oh Puzzles
 ================
 
-Welcome to the gates of Mordor, should you be granted entry you wil be one step closer
-to joining one of the most exciting development teams in Las Vegas.  There are 
-two challenges that guard this gate and you must solve them both to be granted entry.
-
-In order to submit your application for entry you must:
-
-1. [Fork](https://help.github.com/articles/fork-a-repo/) this repository.  
-2. Develop your solutions.
-3. Write a [Markdown](https://help.github.com/articles/github-flavored-markdown/) 
-   formatted how-to so that we can run all of your solutions.
-4. Commit (`git commit`) and Push (`git push`) your code.
-5. Submit your code to us via a [Pull Request](https://help.github.com/articles/using-pull-requests/).
-
-Challenge #1: Fizz Buzz
+Puzzles
 ------------------------
-This is an old one but a good one with a little twist.  That twist is that your 
-solution must be coded in [Haskell](https://www.haskell.org/haskellwiki/Haskell). 
-We want to know your understanding of Functional Programming as we use JavaScript
-extensively and utilizing FP paradigms in JavaScript is often the correct solution. 
+
+## Fizz Buzz
 
 ### The Challenge
 You will write a script that reads 3 command line arguments:
@@ -48,23 +33,9 @@ FizzBuzz
 Fizz
 ```
 
-Challenge #2: Palindrome and Reverse Lexical Sort
--------------------------------------------------
-This challenge is a combination of two different challenges.  Here we want to 
-test your understanding of strings and their representation in different
-languages. We would like you to complete this challenge in 2 different languages.
-You may choose to implement the challenge in one of the following interpreted, 
-dynamically typed languages:
+## Palindrome and Reverse Lexical Sort
 
-* [Perl](http://www.perl.org)
-* [Python](https://www.python.org)
-
-Then you may choose to implement it in one of the following compiled, 
-statically typed languages:
-
-* [Rust](http://www.rust-lang.org)
-* [C](http://en.wikibooks.org/wiki/C_Programming)
-
+### The Challenge
 For this challenge you will take in a text file that is given to you as a 
 command line argument.  That text file will be composed of several lines of
 strings.  You must take each line and determine if that line is a palindrome,
