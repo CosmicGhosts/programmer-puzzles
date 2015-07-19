@@ -76,3 +76,31 @@ For example, the stock cost $500 at 10:30am, so `stock_prices_yesterday[60] = 50
 Write an efficient algorithm for computing the best profit I could have made from 1 purchase and 1 sale of 1 Apple stock yesterday.
 
 No "shorting"—you must buy before you sell. You may not buy and sell in the same time step (at least 1 minute must pass).
+
+## Product of All but One
+
+### The Challenge
+
+Write a function ``get_products_of_all_ints_except_at_index()`` that takes an array of integers and returns an array of the products.
+
+For example, given:
+
+```
+  [1, 7, 3, 4]
+
+```
+
+your function would return:
+
+```
+  [84, 12, 28, 21]
+
+```
+
+by calculating:
+
+```
+  [7*3*4, 1*3*4, 1*7*4, 1*7*3]
+```
+
+Do not use division in your solution.
