@@ -10,16 +10,19 @@ var make_reducer = (fn) => {
   }
 }
 
-var int_array_reducer       = make_reducer(select_first)
-var int_array_reducer_right = make_reducer(multiply)
+var reduce_fn       = make_reducer(select_first)
+var reduce_right_fn = make_reducer(multiply)
 
 var get_products_of_all_ints_except_at_index = (int_array) => {
   var products_before_index = int_array
-    .reduce(int_array_reducer, [[], 1])[0]
+    .reduce(reduce_fn, [[], 1])[0]
   var products = int_array
-    .reduceRight(int_array_reducer_right, [products_before_index, 1])[0]
+    .reduceRight(reduce_right_fn, [products_before_index, 1])[0]
   return products
 }
 
-var arr = [1, 7, 3, 4]
-console.log(get_products_of_all_ints_except_at_index(arr))
+var main = (() => {
+  var arr = [1, 7, 3, 4]
+  var results = get_products_of_all_ints_except_at_index(arr)
+  console.log(results)
+})()
