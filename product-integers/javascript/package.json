@@ -1,0 +1,13 @@
+{
+  "name": "product_integers",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel -d lib src",
+    "start": "node ./lib/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "seanstrom",
+  "license": "MIT"
+}
