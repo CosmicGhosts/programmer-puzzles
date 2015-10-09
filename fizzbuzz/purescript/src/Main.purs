@@ -2,9 +2,17 @@ module Main where
 
 import Prelude
 
+import Data.Maybe
+import Data.Array
+import Data.Either
+import Data.Foreign
+
+import Node.Yargs
+import Node.Yargs.Setup
+import Node.Yargs.Applicative
+
 import Control.Monad.Eff
 import Control.Monad.Eff.Console
-import Node.Yargs
 
 data NoisyNum = Fizz | Buzz | FizzBuzz | Num Int
 
@@ -16,21 +24,21 @@ instance showNoisyNum :: Show NoisyNum where
 
 fizzBuzz :: Int -> Int -> Int -> NoisyNum
 fizzBuzz div1 div2 n
-  | byDiv1 && byDiv2 = FizzBuzz
-  | byDiv1           = Fizz
-  | byDiv2           = Buzz
-  | otherwise        = Num n
-  where
-   byDiv1 = isDivisible div1 n
-   byDiv2 = isDivisible div2 n
+  | isDivisible div1 n && isDivisible div2 n = FizzBuzz
+  | isDivisible div1 n           = Fizz
+  | isDivisible div2 n           = Buzz
+  | otherwise                    = Num n
 
 isDivisible divisor n = n `mod` divisor == 0
 
-main = do
-  log "Hello sailor!"
+app :: forall eff. Array String -> Eff (console :: CONSOLE | eff) Unit
+app []        = return unit
+app [x]       = return unit
+app [x, y]    = return unit
+app [x, y, z] = print $ show $ map (\n -> fizzBuzz 3 5 n) (1..100)
 
--- main = do
---   args <- getArgs
---   let div1:div2:upperBound:[] = [read arg | arg <- args]
---   let putFizzBuzz = show . fizzBuzz div1 div2
---   mapM putStrLn $ map putFizzBuzz [0..upperBound]
+main = do
+  let setup = usage "$0 Word1 Word2"
+              <> example "$0 Hello -w World" "Say hello!"
+
+  runY setup $ app <$> yarg "w" ["word"] (Just "A word") (Right "At least one word is required") false

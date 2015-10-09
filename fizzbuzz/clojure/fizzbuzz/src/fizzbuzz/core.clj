@@ -21,5 +21,4 @@
   [& args]
   (let [[div-a div-b n] args]
     (def output (map (partial fizzbuzz (Integer. div-a) (Integer. div-b)) (range 1 (Integer. n))))
-    (pprint output)
-    ))
+    (pprint output)))
