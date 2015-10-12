@@ -4,11 +4,12 @@
   "description": "trading stocks code challenge",
   "main": "src/index.js",
   "scripts": {
-    "test": "tape tests/**/*.js"
+    "test": "babel-node test/*.js"
   },
   "author": "seanstrom",
   "license": "MIT",
   "devDependencies": {
-    "tape": "^4.2.1"
+    "babel": "^5.8.23",
+    "tape-bdd": "0.0.1"
   }
 }
