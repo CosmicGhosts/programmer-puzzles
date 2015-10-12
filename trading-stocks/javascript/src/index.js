@@ -1,14 +1,18 @@
-function reduce_max_profit(data, current_price, index) {
+const max = Math.max
+const min = Math.min
+
+function reduce_max_profit (data, current_price) {
   var min_price        = data.min_price
   var max_profit       = data.max_profit
   var potential_profit = current_price - min_price
+
   return {
-    min_price:  Math.min(min_price,  current_price),
-    max_profit: Math.max(max_profit, potential_profit)
+    min_price:  min(min_price,  current_price),
+    max_profit: max(max_profit, potential_profit)
   }
 }
 
-function get_max_profit(stock_prices) {
+function max_profit (stock_prices) {
   var defaults = {
     min_price:  stock_prices[0],
     max_profit: stock_prices[1] - stock_prices[0]
@@ -22,8 +26,8 @@ function get_max_profit(stock_prices) {
 
 export default function (stock_prices_yesterday) {
   if (stock_prices_yesterday.length < 2) {
-    throw Error('You need at least two entries')
+    throw new Error('You need at least two entries.')
   }
 
-  return get_max_profit(stock_prices_yesterday)
+  return max_profit(stock_prices_yesterday)
 }

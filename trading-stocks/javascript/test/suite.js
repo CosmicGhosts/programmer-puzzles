@@ -1,5 +1,5 @@
 import describe from 'tape-bdd'
-import tradingStocks from '../src'
+import trading_stocks from '../src'
 
 const fixtures = () => {
   let stocks = []
@@ -16,7 +16,11 @@ const fixtures = () => {
 }
 
 describe('Module: Trading Stocks', (it) => {
+  it('throws error', (expect) => {
+    expect.throws(() => trading_stocks([100]), /You need at least two entries./)
+  })
+
   it('return Num of max profit', (expect) => {
-    expect.equal(tradingStocks(fixtures()), 400)
+    expect.equal(trading_stocks(fixtures()), 400)
   })
 })
