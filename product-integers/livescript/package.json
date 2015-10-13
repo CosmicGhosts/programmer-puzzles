@@ -1,0 +1,11 @@
+{
+  "name": "product-integers",
+  "version": "1.0.0",
+  "description": "Write a function ``get_products_of_all_ints_except_at_index()`` that takes an array of integers and returns an array of the products.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
